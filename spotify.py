@@ -7,6 +7,18 @@ invalid_chars=[":", "<", ">", "{", "}", "/", "?"]#i would put like \ and | but t
 home_dir = Path.home()
 save_path = home_dir / "Music"
 
+class color: #i found this online and thought it could help lol
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
 def clear():
     print("\033[H\033[2J", end="", flush=True)
 
@@ -15,23 +27,22 @@ def clear():
 
 while startup == 0:
 
-    clear()
-    playlistUrl = input("insert the url of your playlist...")
+    playlistUrl = input(color.BOLD+"insert the url of your playlist..."+color.END)
 
     if not playlistUrl or playlistUrl.strip() == "":
-        print("invalid name...")
+        print(color.RED+"invalid name..."+color.END)
         continue
 
     clear()
 
-    foldername = input("name of the folder to save the songs to...")
+    foldername = input(color.BOLD+"name of the folder to save the songs to..."+color.END)
 
     if not foldername or foldername.strip() == "":
-        print("invalid name...")
+        print(color.RED+"invalid name..."+color.END)
         continue
 
     elif any(char in foldername for char in invalid_chars):
-        print("cant have a file with those characters...")
+        print(color.RED+"cant have a file with those characters..."+color.END)
         continue
 
     clear()
@@ -42,7 +53,6 @@ while startup == 0:
 
     startup = 1
 
-clear()
-print("startup done")
+print(color.GREEN+"startup done"+color.END)
     
 
