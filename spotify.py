@@ -66,9 +66,9 @@ playliststring = split_link.split("playlist/")[1]
 
 print (f"https://spotify.com{playliststring}")
 
-formatedurl = f"https://spotify.com/{playliststring}" #this is like the embded fomat so it can find the song nams
+formatedurl = f"https://open.spotify.com/embed/playlist/{playliststring}" #this is like the embded fomat so it can find the song nams
 
-time.sleep(1)#idk why i added this i just think being able to read it for a sec would be nice lol
+time.sleep(3)#idk why i added this i just think being able to read it for a sec would be nice lol
 
 clear()
 
@@ -88,4 +88,9 @@ with urllib.request.urlopen(reqe) as response:
 
     content = rdata.decode(charset)
 
-    print(content)
+    print (content)
+    
+pattern = r'title":"(.*?)","subtitle":"(.*?)"'
+
+matches = re.findall(pattern, content)
+print(matches)
