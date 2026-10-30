@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 #im going to need more inmports
 
@@ -54,5 +55,19 @@ while startup == 0:
     startup = 1
 
 print(color.GREEN+"startup done"+color.END)
-    
+
+split_link = playlistUrl.split("?")[0]
+print (split_link)
+
+playliststring = split_link.split("playlist/")[1]
+
+print (f"https://spotify.com{playliststring}")
+
+formatedurl = f"https://spotify.com{playliststring}"
+
+time.sleep(1)
+
+clear()
+
+print(color.GREEN+"url formated"+color.END)
 
