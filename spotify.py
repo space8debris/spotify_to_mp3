@@ -1,5 +1,8 @@
 from pathlib import Path
 import time
+import urllib.request
+import json
+import re
 
 #im going to need more inmports
 
@@ -63,11 +66,26 @@ playliststring = split_link.split("playlist/")[1]
 
 print (f"https://spotify.com{playliststring}")
 
-formatedurl = f"https://spotify.com{playliststring}"
+formatedurl = f"https://spotify.com/{playliststring}" #this is like the embded fomat so it can find the song nams
 
-time.sleep(1)
+time.sleep(1)#idk why i added this i just think being able to read it for a sec would be nice lol
 
 clear()
 
 print(color.GREEN+"url formated"+color.END)
 
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
+#i just found these headers i hope they work
+
+reqe = urllib.request.Request(formatedurl, headers=headers)
+
+with urllib.request.urlopen(reqe) as response:
+    rdata = response.read() #reeds the data from the page
+
+    charset = response.headers.get_content_charset() or "utf-8"
+
+    content = rdata.decode(charset)
+
+    print(content)
