@@ -3,6 +3,7 @@ import time
 import urllib.request
 import json
 import re
+import yt_dlp
 
 #im going to need more inmports
 
@@ -90,7 +91,38 @@ with urllib.request.urlopen(reqe) as response:
 
     print (content)
     
-pattern = r'title":"(.*?)","subtitle":"(.*?)"'
+pattern = r'title"\s*:\s*"(.*?)".*?"subtitle"\s*:\s*"(.*?)".*?"duration"\s*:\s*(\d+)'
+
 
 matches = re.findall(pattern, content)
+del matches[0]
 print(matches)
+
+time.sleep(2)
+clear()
+
+print(color.GREEN+"song names and artest found"+color.END)
+
+
+for track in matches:
+    title, artist, duration_ms = track
+    duration_sec = int(duration_ms) / 1000
+    
+    print(f"Downloading: {artist} - {title}")
+
+
+
+    ydl_opts = {
+        'default_search': 'ytsearch',
+        'playlist_items': '1',
+        'outtmpl': str(songsave_path) + '/%(title)s %(artist,uploader)s.%(ext)s',
+        'match_filter': f"duration > {duration_sec - 4} & duration < {duration_sec + 4}",
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+    }
+
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([f"{artist} {title}"])
+    except Exception as e:
+        print(f"Skipped {title}: {e}")
