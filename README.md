@@ -13,10 +13,10 @@ song and downloads it as an mp3.
 
 
 Known problems:<br>
-has a 100~ song cap (I have an idea on how to fix)
-skips some songs (I kind of know how to fix this)
-takes a long time (I am working on adding parallel downloads to fix this)
-does not add the cover art to the metadata of the song
+has a 100~ song cap (I have an idea on how to fix) <br>
+skips some songs (I kind of know how to fix this) <br>
+takes a long time (I am working on adding parallel downloads to fix this) <br>
+does not add the cover art to the metadata of the song <br>
 
 
 
