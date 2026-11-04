@@ -12,7 +12,7 @@ song and downloads it as an mp3.
 
 
 
-Known problems:
+Known problems:<br>
 has a 100~ song cap (I have an idea on how to fix)
 skips some songs (I kind of know how to fix this)
 takes a long time (I am working on adding parallel downloads to fix this)
