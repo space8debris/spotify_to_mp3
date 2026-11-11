@@ -149,7 +149,7 @@ def artist_ok(entry, artist):
     return any(n and n in haystack for n in names)
 
 
-def search_candidates(query):
+def search_can(query):
     opts = {'quiet': True, 'no_warnings': True, 'extract_flat': True,
             'skip_download': True, 'ignoreerrors': True,
             'retries': 5, 'socket_timeout': 15}
@@ -183,16 +183,16 @@ def song(title, artist, duration_ms):
     first_artist = artist.split(",")[0].strip()
     simple_title = re.sub(r"[(\[{].*?[)\]}]", " ", title)
     simple_title = re.sub(r"\s+", " ", simple_title).strip()
-    queries = list(dict.fromkeys([
+    querr = list(dict.fromkeys([
         f"{first_artist} {title}",
         f"{first_artist} {simple_title}",
         f"{simple_title} {first_artist} audio",
     ]))
 
     url = None
-    for q in queries:
+    for q in querr:
         try:
-            entries = search_candidates(q)
+            entries = search_can(q)
         except Exception:
             continue
         url = pick_best(entries, title, artist, target)
