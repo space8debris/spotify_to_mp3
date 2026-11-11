@@ -14,9 +14,8 @@ song and downloads it as an mp3.
 
 Known problems:<br>
 1.has a 100~ song cap (I have an idea on how to fix) <br>
-2.skips some songs (I kind of know how to fix this) <br>
-3.takes a long time (I am working on adding parallel downloads to fix this) <br>
-4.does not add the cover art to the metadata of the song <br>
-
+2.does not add the cover art to the metadata of the song <br>
+3.Add a ui 
+4.if a vid is age restricted after a while it needs cookies to fix i found a guide on how to fix i just need to
 
 
